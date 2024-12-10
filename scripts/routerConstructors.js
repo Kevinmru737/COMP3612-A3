@@ -24,10 +24,10 @@ const handleById = app => {
 *   getResults - returns results for a specified constructor
 */
 const getResults = app => {
-    app.get('/f1_api/constructorResults/:ref/:year', (req,resp) => {
+    app.get('/f1_api/constructorResults/:ref/:year', (req, resp) => {
         const found = results.filter(d => {
-            return ((d.constructorRef === (req.params.ref).toLowerCase()) && 
-            (d.race.year === parseInt(req.params.year)))
+            return ((d.constructor.ref === (req.params.ref).toLowerCase()) && 
+            (parseInt(d.race.year) === parseInt(req.params.year)))
         });
         if(found.length > 0)
             resp.json(found);
