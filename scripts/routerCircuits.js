@@ -8,11 +8,11 @@ const handleAll = app => {
 };
 
 /*
-*   handlebyId - returns circuit specified by reference
+*   handlebyId - returns circuit specified by reference id
 */
 const handleById = app => {
-    app.get('/f1_api/circuits/:ref', (req,resp) => { 
-        const found = data.filter(d => d.circuitRef === (req.params.ref).toLowerCase());
+    app.get('/f1_api/circuits/:id', (req,resp) => { 
+        const found = data.filter(d => d.circuitId === parseInt(req.params.id));
         if (found.length > 0)
             resp.json(found);
         else
