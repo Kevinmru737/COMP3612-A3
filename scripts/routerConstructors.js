@@ -12,7 +12,7 @@ const handleAll = app => {
 */
 const handleById = app => {
     app.get('/f1_api/constructors/:ref', (req,resp) => { 
-        const found = data.filter(d => d.constructorRef === req.params.ref);
+        const found = data.filter(d => d.constructorRef === (req.params.ref).toLowerCase());
         if (found.length > 0)
             resp.json(found);
         else
@@ -26,7 +26,7 @@ const handleById = app => {
 const getResults = app => {
     app.get('/f1_api/constructorResults/:ref/:year', (req,resp) => {
         const found = results.filter(d => {
-            return ((d.constructorRef === req.params.ref) && 
+            return ((d.constructorRef === (req.params.ref).toLowerCase()) && 
             (d.race.year === parseInt(req.params.year)))
         });
         if(found.length > 0)

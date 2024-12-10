@@ -12,7 +12,7 @@ const handleAll = app => {
 */
 const handleById = app => {
     app.get('/f1_api/drivers/:ref', (req,resp) => { 
-        const found = data.filter(d => d.driverRef === req.params.ref);
+        const found = data.filter(d => d.driverRef === (req.params.ref).toLowerCase());
         if (found.length > 0)
             resp.json(found);
         else
@@ -26,7 +26,7 @@ const handleById = app => {
 const getResults = app => {
     app.get('/f1_api/driverResults/:ref/:year', (req,resp) => {
         const found = results.filter(d => {
-            return ((d.driver.ref === req.params.ref) && 
+            return ((d.driver.ref === (req.params.ref).toLowerCase()) && 
             (d.race.year === parseInt(req.params.year)))
         });
         if(found.length > 0)

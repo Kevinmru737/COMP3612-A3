@@ -12,7 +12,7 @@ const handleAll = app => {
 */
 const handleById = app => {
     app.get('/f1_api/circuits/:ref', (req,resp) => { 
-        const found = data.filter(d => d.circuitRef === req.params.ref);
+        const found = data.filter(d => d.circuitRef === (req.params.ref).toLowerCase());
         if (found.length > 0)
             resp.json(found);
         else
